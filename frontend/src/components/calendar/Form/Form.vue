@@ -100,7 +100,7 @@
 </template>
 
 <script>
-    import axios from 'axios';
+    // import axios from 'axios';
     import Vue from "vue";
     import {mapState} from 'vuex';
 
@@ -126,24 +126,52 @@
                 this.validate();
 
                 if (this.validated) {
-                    axios.post(process.env.VUE_APP_API_URL + '/events/create', this.form_data).then((response) => {
+
+                    this.$http.post(process.env.VUE_APP_API_URL + '/events/create', this.form_data).then(response => {
+
                         if (response.data.success === true) {
 
                             this.form_data.days = this.form_data.days.length === 0 ? [0, 1, 2, 3, 4, 5, 6] : this.form_data.days;
                             this.$store.dispatch('setCalendarValues', this.form_data);
                             this.form_data.days = [];
 
-                            Vue.$toast.success(response.data.message, {
-                            });
+                            Vue.$toast.success(response.data.message, {});
                         } else {
-                            Vue.$toast.error(response.data.message, {
-                            });
+                            Vue.$toast.error(response.data.message, {});
                         }
-                    }).catch(function (error) {
-                        console.log(error);
-                        Vue.$toast.error("Unable to Connect to API", {
-                        });
+                        // // get status
+                        // response.status;
+                        //
+                        // // get status text
+                        // response.statusText;
+                        //
+                        // // get 'Expires' header
+                        // response.headers.get('Expires');
+                        //
+                        // // get body data
+                        // this.someData = response.body;
+
+                    }).catch((error) => {
+                        alert(error);
                     });
+                    // axios.post(process.env.VUE_APP_API_URL + '/events/create', this.form_data).then((response) => {
+                    //     if (response.data.success === true) {
+                    //
+                    //         this.form_data.days = this.form_data.days.length === 0 ? [0, 1, 2, 3, 4, 5, 6] : this.form_data.days;
+                    //         this.$store.dispatch('setCalendarValues', this.form_data);
+                    //         this.form_data.days = [];
+                    //
+                    //         Vue.$toast.success(response.data.message, {
+                    //         });
+                    //     } else {
+                    //         Vue.$toast.error(response.data.message, {
+                    //         });
+                    //     }
+                    // }).catch(function (error) {
+                    //     console.log(error);
+                    //     Vue.$toast.error("Unable to Connect to API", {
+                    //     });
+                    // });
                 }
             },
 

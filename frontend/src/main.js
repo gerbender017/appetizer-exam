@@ -4,7 +4,9 @@ import vuetify from './plugins/vuetify';
 import "vue-toastification/dist/index.css";
 import Toast from "vue-toastification";
 import store from './store/index';
+import VueResource from "vue-resource"
 
+Vue.use(VueResource);
 Vue.use(Toast);
 Vue.config.productionTip = false;
 Vue.config.devtools = true;

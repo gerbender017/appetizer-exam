@@ -13,6 +13,7 @@
     "moment": "^2.24.0",
     "moment-range": "^4.0.2",
     "vue": "^2.5.22",
+    "vue-resource": "^1.5.1",
     "vue-toast-notification": "^0.1.0",
     "vue-toasted": "^1.1.28",
     "vue-toastification": "^0.9.0",
