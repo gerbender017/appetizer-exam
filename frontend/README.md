@@ -1,4 +1,4 @@
-# calendar-practice
+# Appetizer exam
 
 ## Project setup
 ```
